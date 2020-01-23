@@ -5,6 +5,9 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using LocFut.Application;
 using LocFut.Application.Interface;
+using AutoMapper;
+using LocFut.Domain;
+using LocFut.Models;
 
 namespace LocFut
 {
@@ -22,8 +25,15 @@ namespace LocFut
         {
             services.AddControllers();
             services.AddInfraData();
-            services.AddScoped<IQuadraService, QuadraService>();
-            //services.AddApplication();
+            services.AddApplication();
+
+            var config = new AutoMapper.MapperConfiguration(cfg =>
+            {
+                cfg.CreateMap<QuadraModel, Quadra>();
+            });
+            IMapper mapper = config.CreateMapper();
+
+            services.AddSingleton(mapper);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

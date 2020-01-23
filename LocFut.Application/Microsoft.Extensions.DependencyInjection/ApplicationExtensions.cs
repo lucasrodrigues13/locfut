@@ -1,7 +1,7 @@
-﻿using LocFut.Application.Interface;
-using Microsoft.Extensions.DependencyInjection;
+﻿using LocFut.Application;
+using LocFut.Application.Interface;
 
-namespace LocFut.Application.Microsoft.Extensions.DependencyInjection
+namespace Microsoft.Extensions.DependencyInjection
 {
     public static class ApplicationExtensions
     {
